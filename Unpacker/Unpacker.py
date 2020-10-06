@@ -11,18 +11,18 @@ import os
 import zipfile
 
 # каталог, в котором будем искать архивы
-zip_folder_path = r'C:\Users\User\Downloads\Мои документы'  # задать через inpyt()
+zip_folder_path = input('Укажите путь к каталогу с файлами архива: ')
 # запрос пути для хранения распакованных данных
-unpacked_folder_path = r'C:\Users\User\Downloads\unpack files'  # str(input('Укажите каталог для распаковки архивов: '))
+unpacked_folder_path = input('Укажите путь к каталогу для распаковки архива: ')
 
-def unzip():
-    os.chdir(zip_folder_path)
+def unzip(folder):
+    os.chdir(folder)
     # проверка наличия каталога для хранения распакованных данных
     if not os.path.exists(unpacked_folder_path):
         # если каталог отсутствует - создать его
         os.mkdir(unpacked_folder_path)
     # поиск всех файлов в корневом каталоге
-    for files in os.walk(zip_folder_path):
+    for files in os.walk(folder):
         # выбор списка файлов
         for file in files:
             # обход всех файлов в списке
@@ -47,5 +47,5 @@ def rename_folders_and_files(folder):
                 if not os.path.isdir(decode_dirs):
                     rename_folders_and_files(folder)
 
-unzip()
+unzip(zip_folder_path)
 rename_folders_and_files(unpacked_folder_path)
