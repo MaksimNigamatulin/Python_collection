@@ -1,1 +1,1 @@
-# garbage-collection
+# Python collection
